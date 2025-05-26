@@ -1,0 +1,32 @@
+{
+  "function": "evaluateFactualMaturity",
+  "schema": "schemas/automation/factualMaturity.schema.json",
+  "steps": [
+    {
+      "id": "promptAgent",
+      "type": "nlp",
+      "action": "ask",
+      "tool": "dsl",
+      "code": "generatePrompts(agentId, entropy)",
+      "output": "questionSet"
+    },
+    {
+      "id": "verifyAnswers",
+      "type": "logic",
+      "action": "verify",
+      "code": "checkSources(responses)",
+      "output": "verifiedSet"
+    },
+    {
+      "id": "scoreMaturity",
+      "type": "control",
+      "action": "evaluate",
+      "code": "maturity = calcScore(verifiedSet); return { maturityScore: maturity, voteEligibility: maturity > 0.7 }",
+      "output": "output"
+    }
+  ],
+  "orchestration": {
+    "type": "sequential",
+    "runtime": "nodejs"
+  }
+}

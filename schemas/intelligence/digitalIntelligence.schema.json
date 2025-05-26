@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Digital Intelligence Assessment",
+  "type": "object",
+  "required": ["agentId", "logicSkills", "memoryTrace", "decisionLog"],
+  "properties": {
+    "agentId": {
+      "type": "string",
+      "description": "Unique agent identifier"
+    },
+    "logicSkills": {
+      "type": "array",
+      "description": "Tests of reasoning using DSL",
+      "items": {
+        "type": "object",
+        "required": ["input", "output", "passed"],
+        "properties": {
+          "input": { "type": "string" },
+          "output": { "type": "string" },
+          "passed": { "type": "boolean" }
+        }
+      }
+    },
+    "memoryTrace": {
+      "type": "array",
+      "description": "Memory recall of previous verified facts",
+      "items": {
+        "type": "object",
+        "required": ["fact", "timestamp", "source", "retrieved"],
+        "properties": {
+          "fact": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "source": { "type": "string" },
+          "retrieved": { "type": "boolean" }
+        }
+      }
+    },
+    "decisionLog": {
+      "type": "array",
+      "description": "Recent decisions taken autonomously",
+      "items": {
+        "type": "object",
+        "required": ["action", "reasoning", "impact"],
+        "properties": {
+          "action": { "type": "string" },
+          "reasoning": { "type": "string" },
+          "impact": { "type": "string" }
+        }
+      }
+    },
+    "score": {
+      "type": "object",
+      "properties": {
+        "logic": { "type": "number", "minimum": 0, "maximum": 1 },
+        "memory": { "type": "number", "minimum": 0, "maximum": 1 },
+        "autonomy": { "type": "number", "minimum": 0, "maximum": 1 },
+        "digitalIntelligenceIndex": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

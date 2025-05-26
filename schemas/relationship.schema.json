@@ -1,0 +1,24 @@
+{
+  "$id": "https://sovereign-revelation/schema/relationship.schema.json",
+  "title": "Relational Web Node",
+  "type": "object",
+  "required": ["participants", "type", "terms", "consentLog"],
+  "properties": {
+    "participants": {
+      "type": "array",
+      "items": { "type": "string", "format": "sid" }
+    },
+    "type": { "type": "string" },
+    "terms": { "type": "string" },
+    "consentLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}

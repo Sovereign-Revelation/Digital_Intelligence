@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "condition": { "==": [ { "var": "user.role" }, "admin" ] },
+      "action": "grant_all_access"
+    },
+    {
+      "condition": { "==": [ { "var": "user.status" }, "suspended" ] },
+      "action": "deny_access"
+    },
+    {
+      "condition": { "in": [ { "var": "user.role" }, ["guest", "anonymous"] ] },
+      "action": "read_only"
+    }
+  ]
+}

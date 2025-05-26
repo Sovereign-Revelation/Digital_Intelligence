@@ -1,0 +1,17 @@
+{
+  "$id": "https://sovereign-revelation/schema/truth-curation.schema.json",
+  "title": "Truth Curation",
+  "type": "object",
+  "required": ["claim", "sources", "verifiers"],
+  "properties": {
+    "claim": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "verifiers": {
+      "type": "array",
+      "items": { "type": "string", "format": "sid" }
+    }
+  }
+}

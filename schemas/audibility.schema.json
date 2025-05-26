@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AudibilityRuleSet",
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": { "type": "object" },
+          "action": { "type": "string" }
+        },
+        "required": ["condition", "action"]
+      }
+    }
+  },
+  "required": ["rules"]
+}
